@@ -1,5 +1,10 @@
+D:\software\workspace\TuTu\tutu-server\src\main\java\com\tutu\common\ChatRequest.java
+D:\software\workspace\TuTu\tutu-server\src\main\java\com\tutu\common\GlobalExceptionHandler.java
+D:\software\workspace\TuTu\tutu-server\src\main\java\com\tutu\common\Result.java
+D:\software\workspace\TuTu\tutu-server\src\main\java\com\tutu\common\SseChunk.java
 D:\software\workspace\TuTu\tutu-server\src\main\java\com\tutu\configuration\ChatModel.java
-D:\software\workspace\TuTu\tutu-server\src\main\java\com\tutu\Controller\ChatController.java
+D:\software\workspace\TuTu\tutu-server\src\main\java\com\tutu\configuration\CorsConfig.java
+D:\software\workspace\TuTu\tutu-server\src\main\java\com\tutu\controller\ChatController.java
 D:\software\workspace\TuTu\tutu-server\src\main\java\com\tutu\service\chatService.java
 D:\software\workspace\TuTu\tutu-server\src\main\java\com\tutu\service\impl\ChatServiceImpl.java
 D:\software\workspace\TuTu\tutu-server\src\main\java\com\tutu\TutuApplication.java
