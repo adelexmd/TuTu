@@ -1,7 +1,10 @@
 package com.tutu.service;
 
+import com.tutu.common.ChatRequest;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 public interface chatService {
-    public String sendMessage(String message);
-    public String explain(String message);
+    String sendMessage(String message, String mode);
+
+    SseEmitter stream(String message, String mode);
 }
