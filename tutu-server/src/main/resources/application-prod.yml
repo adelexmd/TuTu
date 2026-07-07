@@ -1,0 +1,6 @@
+# 生产环境配置：地址 / 模型 / Key 均由部署环境变量注入，避免明文落库
+tutu:
+  deepseek:
+    base-url: ${DEEPSEEK_BASE_URL:https://api.deepseek.com}
+    model-name: ${DEEPSEEK_MODEL:deepseek-chat}
+    api-key: ${DEEPSEEK_API_KEY:sk-placeholder}

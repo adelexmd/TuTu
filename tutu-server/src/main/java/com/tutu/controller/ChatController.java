@@ -9,6 +9,7 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -28,19 +29,28 @@ public class ChatController {
      */
     @PostMapping("/chat")
     public Result<Map<String, String>> chat(@RequestBody ChatRequest req) {
-        String content = chatService.sendMessage(req.getMessage(), req.getMode());
+        String sessionId = resolveSessionId(req.getSessionId());
+        String content = chatService.sendMessage(sessionId, req.getMessage(), req.getMode());
         Map<String, String> data = new HashMap<>();
-        data.put("sessionId", req.getSessionId() == null ? "" : req.getSessionId());
+        data.put("sessionId", sessionId);
         data.put("content", content);
         return Result.success(data);
     }
 
     /**
-     * 流式对话接口（SSE）。
-     * 返回 SseEmitter，按 data: {"delta":"...","finish":false} 逐 token 推送。
+     * 流式对话接口（SSE）。按 data: {"delta":"...","finish":false} 逐 token 推送，
+     * 最后一帧回填 sessionId：data: {"delta":"","finish":true,"sessionId":"..."}
      */
     @PostMapping("/chat/stream")
     public SseEmitter stream(@RequestBody ChatRequest req) {
-        return chatService.stream(req.getMessage(), req.getMode());
+        String sessionId = resolveSessionId(req.getSessionId());
+        return chatService.stream(sessionId, req.getMessage(), req.getMode());
+    }
+
+    private String resolveSessionId(String sessionId) {
+        if (sessionId == null || sessionId.isBlank()) {
+            return UUID.randomUUID().toString();
+        }
+        return sessionId;
     }
 }

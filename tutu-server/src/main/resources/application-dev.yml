@@ -1,0 +1,5 @@
+# 开发环境配置：默认直连 DeepSeek 官方地址
+tutu:
+  deepseek:
+    base-url: https://api.deepseek.com
+    model-name: deepseek-chat
